@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 指定校验配置文件的DTD信息 -->
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<!-- 校验文件的根元素 -->
+<validators>
+    <!-- 要对哪一个参数进行检验，就要写出<field>标签，且设置其name值对应此参数 -->
+    <field name="admin.adminname">
+        <!-- 必填校验器，检查其输入是否为空 -->
+        <field-validator type="requiredstring" short-circuit="true">
+            <param name="trim">true</param>
+            <message>必须输入用户名2</message>
+        </field-validator>
+    </field>
+
+    <field name="admin.adminpassword">
+        <field-validator type="requiredstring" short-circuit="true">
+            <param name="trim">true</param>
+            <message>必须输入密码2</message>
+        </field-validator>
+    </field>
+   <!-- <field name="checkadminpassword">
+        &lt;!&ndash; 意思为表达式校验器，检查其password是否等于p2 &ndash;&gt;
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[(password==p2)]]></param>
+            <message>两次输入密码不一致</message>
+        </field-validator>
+    </field>-->
+
+    <!--<field name="newpassword">
+        <field-validator type="requiredstring" short-circuit="true">
+            <param name="trim">true</param>
+            <message>必须输入密码</message>
+        </field-validator>
+    </field>
+    <field name="np2">
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression"><![CDATA[(newpassword==np2)]]></param>
+            <message>两次输入密码不一致</message>
+        </field-validator>
+        &lt;!&ndash; 意思为正则表达式校验器，检查其输入的内容是否符合要求 &ndash;&gt;
+        <field-validator type="regex">
+            <param name="expression"><![CDATA[(\w{4,25})]]></param>
+            <message>您输入的新密码只能是字母和数字，且长度必须在4到25之间</message>
+        </field-validator>
+    </field>-->
+</validators>

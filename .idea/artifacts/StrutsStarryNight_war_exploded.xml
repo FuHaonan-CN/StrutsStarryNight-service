@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="StrutsStarryNight:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/StrutsStarryNight_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="StrutsStarryNight/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="StrutsStarryNight-service" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="struts-2.3.34" />
+          <element id="library" level="project" name="hibernate" />
+          <element id="library" level="project" name="极客验证码" />
+          <element id="library" level="project" name="文件上传" />
+          <element id="library" level="project" name="struts2-dojo-plugin-2.2.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

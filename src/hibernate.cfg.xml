@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <!--配置连接数据库的基本信息-->
+    <session-factory>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1/struts_starrynight?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+        <!--<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>-->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        <!--尝试-->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- 配置c3p0 -->
+        <property name="c3p0.max_size">10</property>
+        <property name="c3p0.min_size">4</property>
+        <property name="c3p0.acquire_increment">2</property>
+        <property name="c3p0.timeout">2000</property>
+        <property name="c3p0.idle_test_period">1000</property>
+        <property name="c3p0.max_statements">10</property>
+
+       <!-- <mapping class="entity.Admin"/>
+        <mapping resource="entity/Admin.hbm.xml"/>
+        <mapping class="entity.NewsInfo"/>
+        <mapping resource="entity/NewsInfo.hbm.xml"/>
+        <mapping class="entity.PostComment"/>
+        <mapping resource="entity/PostComment.hbm.xml"/>
+        <mapping class="entity.SmsReminderInfo"/>
+        <mapping resource="entity/SmsReminderInfo.hbm.xml"/>
+        <mapping class="entity.UserBasicInfo"/>
+        <mapping resource="entity/UserBasicInfo.hbm.xml"/>
+        <mapping class="entity.UserForumInfo"/>
+        <mapping resource="entity/UserForumInfo.hbm.xml"/>-->
+
+        <mapping class="entity.Admin"/>
+        <!--<mapping resource="entity/Admin.hbm.xml"/>-->
+        <mapping class="entity.NewsInfo"/>
+        <!--<mapping resource="entity/NewsInfo.hbm.xml"/>-->
+        <mapping class="entity.UserBasicInfo"/>
+        <!--<mapping resource="entity/UserBasicInfo.hbm.xml"/>-->
+        <mapping class="entity.PostComment"/>
+        <!--<mapping resource="entity/PostComment.hbm.xml"/>-->
+        <mapping class="entity.PostInfo"/>
+        <!--<mapping resource="entity/PostInfo.hbm.xml"/>-->
+        <mapping class="entity.ReportInfo"/>
+        <!--<mapping resource="entity/ReportInfo.hbm.xml"/>-->
+        <mapping class="entity.SmsReminderInfo"/>
+        <!--<mapping resource="entity/SmsReminderInfo.hbm.xml"/>-->
+        <mapping class="entity.UserForumInfo"/>
+        <!--<mapping resource="entity/UserForumInfo.hbm.xml"/>-->
+
+
+    </session-factory>
+</hibernate-configuration>

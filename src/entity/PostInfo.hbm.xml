@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="test.Postinfo" table="postinfo" schema="struts_starrynight">
+        <id name="postid" column="postid"/>
+        <property name="rightname" column="rightname"/>
+        <property name="posttitle" column="posttitle"/>
+        <property name="posttime" column="posttime"/>
+        <property name="postinfo" column="postinfo"/>
+        <property name="pic" column="pic"/>
+        <property name="postcollected" column="postcollected"/>
+        <property name="postfabulous" column="postfabulous"/>
+        <property name="poststate" column="poststate"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="test.Reportinfo" table="reportinfo" schema="struts_starrynight">
+        <id name="reportid" column="reportid"/>
+        <property name="rightname" column="rightname"/>
+        <property name="newstime" column="newstime"/>
+        <property name="info" column="info"/>
+        <property name="pic" column="pic"/>
+        <property name="reportstate" column="reportstate"/>
+    </class>
+</hibernate-mapping>

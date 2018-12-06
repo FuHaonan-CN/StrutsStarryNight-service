@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--
+       private int id;//自增编号，主键
+        private String username;//用户名
+        private String userpassword;//密码
+        private String useremail;//邮箱
+        private String usertel;//手机号
+        private String name;//姓名s
+        private int sex;//性别1:男 2:女
+        private String usernative;//籍贯
+        private String usernation;//民族
+        private String useradd;//联系地址
+        private String pic;//图片名
+        -->
+    <class name="entity.UserBasicInfo" table="userbasicinfo">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="native"/>
+        </id>
+        <property name="pic" type="java.lang.String">
+            <column name="pic" length="50"/>
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="username" length="16"/>
+        </property>
+        <property name="userpassword" type="java.lang.String">
+            <column name="userpassword" length="16"/>
+        </property>
+        <property name="useremail" type="java.lang.String">
+            <column name="useremail" length="50"/>
+        </property>
+        <property name="usertel" type="java.lang.String">
+            <column name="usertel" length="16"/>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="name" length="50"/>
+        </property>
+        <property name="sex" type="java.lang.Integer" column="sex" length="2">
+        </property>
+        <property name="usernative" type="java.lang.String">
+            <column name="usernative" length="50"/>
+        </property>
+        <property name="usernation" type="java.lang.String">
+            <column name="usernation" length="50"/>
+        </property>
+        <property name="useradd" type="java.lang.String">
+            <column name="useradd" length="50"/>
+        </property>
+    </class>
+   <!-- <class name="entity.UserBasicInfo" table="userbasicinfo" schema="hibernate_starry_night">
+        <id name="id" column="id"/>
+        <property name="pic" column="pic"/>
+        <property name="username" column="username"/>
+        <property name="userpassword" column="userpassword"/>
+        <property name="useremail" column="useremail"/>
+        <property name="usertel" column="usertel"/>
+        <property name="name" column="name"/>
+        <property name="sex" column="sex"/>
+        <property name="usernative" column="usernative"/>
+        <property name="usernation" column="usernation"/>
+        <property name="useradd" column="useradd"/>
+    </class>-->
+</hibernate-mapping>

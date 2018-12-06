@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!--设置字符编码-->
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <!--设置默认上传的临时文件保存位置-->
+    <!--<constant name="struts.multipart.saveDir" value="/tmp"/>-->
+
+    <!-- 限制上传文件的大小，第一种方式：通过修改struts2的常量。
+  		在default.properties中配的struts.multipart.maxSize=2097152-->
+    <constant name="struts.multipart.maxSize" value="4097152"/>
+
+    <package name="default" namespace="/" extends="struts-default">
+        <!--首页相关action-->
+        <action name="homepage" class="action.HomepageAction">
+            <result name="index">/homepage/index.jsp</result>
+            <result name="input">/homepage/index.jsp</result>
+        </action>
+        <!--跳转验证码servlet-->
+        <action name="register" class="action.VerificationAction">
+            <result>/pc-geetest/register</result>
+        </action>
+        <!--time.action-->
+        <action name="time" class="action.HomepageAction" method="time">
+            <result name="time">/index1.jsp</result>
+        </action>
+    </package>
+
+    <package name="actions" namespace="/" extends="struts-default">
+        <!--用户拦截器定义在该元素下-->
+        <interceptors>
+            <!--定义权限检查拦截器-->
+            <interceptor name="CheckSession" class="util.CheckSession"></interceptor>
+            <!--定义一个包含权限检查的拦截器栈-->
+            <interceptor-stack name="newStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="CheckSession">
+                    <param name="excludeMethods">login,queryById</param>
+                </interceptor-ref>
+                <!--<interceptor-ref name="defaultStack"></interceptor-ref>-->
+            </interceptor-stack>
+        </interceptors>
+        <!--设置全局默认的拦截器栈-->
+        <default-interceptor-ref name="newStack"></default-interceptor-ref>
+        <!--定义全局result-->
+        <!--<global-results>-->
+            <!--<result name="{3}Login">/{3}/{3}Login.jsp</result>-->
+        <!--</global-results>-->
+
+        <!-- *_*_* 通配符解释“Admin（action）_insert(method)_admin(引用的后台管理admin或者user)”-->
+        <action name="*_*_*" class="action.{1}Action" method="{2}">
+            <result name="adminLogin">/admin/adminLogin.jsp</result>
+            <result name="userLogin">/user/userLogin.jsp</result>
+            <result name="{3}LoginSuccess">/{3}/{3}LoginSuccess.jsp</result>
+            <result name="insert" type="redirectAction">{1}_selectAll_{3}</result>
+            <result name="register">/{3}/{3}LoginSuccess.jsp</result>
+            <result name="delete" type="redirectAction">{1}_selectAll_{3}</result>
+            <result name="deleteMore" type="redirectAction">{1}_selectAll_{3}</result>
+            <result name="selectAll">/{3}/{3}Manager.jsp</result>
+            <result name="update" type="redirectAction">{1}_selectAll_{3}</result>
+            <result name="updateInput">/{3}/{3}Update.jsp</result>
+            <result name="insertInput">/{3}/{3}Insert.jsp</result>
+            <result name="errors">/admin/errors.jsp</result>
+            <result name="input">/{3}/{3}Login.jsp</result>
+            <result name="logout" type="redirectAction">homepage</result>
+            <result name="homepage" type="redirectAction">homepage</result>
+            <result name="queryById">/news/newsInfo.jsp</result>
+            <result name="postInsertInput">/user/{3}Insert.jsp</result>
+            <result name="postSelectAll">/user/{3}Manager.jsp</result>
+            <result name="postQueryById">/user/postInfo.jsp</result>
+            <result name="postUpdateInput">/user/{3}Update.jsp</result>
+
+            <!--应用自定义拦截器-->
+            <!-- <interceptor-ref name="CheckSession"/>-->
+            <interceptor-ref name="newStack"></interceptor-ref>
+
+            <!-- 定义局部拦截器 -->
+            <!--定义局部拦截器，指定（限制）上传文件的类型，修改默认拦截器的属性
+                           第二种方式 "fileUpload.maximumSize" ：限制上传最大的文件大小。（二选一）
+                            "fileUpload.allowedTypes"：允许上传文件的类型。
+                            "fileUpload.allowedExtensions"：允许上传文件的可扩展文件类型。-->
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.allowedTypes">image/jpg,image/jpeg,image/png</param>
+                <!-- <param name="fileUpload.allowedExtensions">.txt,.ppt</param>-->
+            </interceptor-ref>
+        </action>
+
+    </package>
+</struts>

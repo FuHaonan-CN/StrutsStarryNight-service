@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--
+    private int id;					//自增id
+	int privilege ;					//权限等级
+	private String adminName;		//admin账户
+	private String adminPassword;	//admin密码
+	private String remarks;			//备注
+	private String pic;				//图片名
+    -->
+    <class name="entity.Admin" table="admin">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="native"/>
+        </id>
+        <property name="privilege" type="java.lang.Integer" column="privilege" length="2">
+        </property>
+        <property name="adminname" type="java.lang.String" >
+            <column name="adminname" length="16"/>
+        </property>
+        <property name="adminpassword" type="java.lang.String" >
+            <column name="adminpassword" length="16"/>
+        </property>
+        <property name="remarks" type="java.lang.String" >
+            <column name="remarks" length="50"/>
+        </property>
+        <property name="pic" type="java.lang.String" >
+            <column name="pic" length="50"/>
+        </property>
+    </class>
+    <!--反向生成-->
+    <!--<class name="entity.Admin" table="admin" schema="hibernate_starry_night">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="privilege" column="privilege"/>
+        <property name="adminname" column="adminname"/>
+        <property name="adminpassword" column="adminpassword"/>
+        <property name="pic" column="pic"/>
+        <property name="remarks" column="remarks"/>
+    </class>-->
+</hibernate-mapping>
